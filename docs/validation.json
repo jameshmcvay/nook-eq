@@ -35,5 +35,8 @@
     "full physical channel/24-bit hardware verification",
     "worst-case real-time scheduling proof",
     "boot/recovery validation of persistent image"
-  ]
+  ],
+  "packaged_ram_install_after_clean_reboot": true,
+  "primary_flash_unchanged_after_packaged_install": true,
+  "release_archive_sha256": "e5c7226cecc68c65b0d0c8541d55745ff1ad702d253055a8f5ad0ba659976185"
 }

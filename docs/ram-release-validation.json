@@ -1,0 +1,29 @@
+{
+  "release": "v0.1.0",
+  "mode": "RAM only; no firmware flashing",
+  "archive_sha256": "e5c7226cecc68c65b0d0c8541d55745ff1ad702d253055a8f5ad0ba659976185",
+  "checks": {
+    "ram_files_removed": true,
+    "stock_hooks_restored_after_reboot": true,
+    "fresh_packaged_install": true,
+    "initial_bypass": true,
+    "device_web_assets_and_ram_mode": true,
+    "http_apply_and_readback": true,
+    "primary_flash_unchanged": true,
+    "live_audio_and_applied_generation": true,
+    "audible_confirmation": true
+  },
+  "audio_status": {
+    "magic": 1162948912,
+    "abi": 1,
+    "requested": 3,
+    "applied": 3,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 2,
+    "output_clips": 0,
+    "internal_clips": 0
+  },
+  "scope": "One A1392 running stock 7.8.1; diagnostic SSH already enabled.",
+  "persistent_firmware_boot_tested": false
+}

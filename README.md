@@ -10,7 +10,7 @@ Eight peaking bands, preamp, bypass, gentle presets and a response preview. Open
 
 Personal, experimental project. **A1392 with firmware 7.8.1 only.** Tested on one device. Other AirPorts and firmware versions are unsupported.
 
-- **RAM install:** the driver and UI run on the AirPort. Reboot/power-cycle removes them and returns to the stock kernel. This path has been exercised on hardware.
+- **RAM install:** the driver and UI run on the AirPort. Reboot/power-cycle removes them and returns to the stock kernel. The packaged installer has been tested end to end after a clean reboot: stock hooks restored, fresh ZIP install, live web control/audio and unchanged primary flash. See [release validation](docs/ram-release-validation.json).
 - **Persistent image:** local builder and offline candidate provided. Root filesystem preservation, startup assets and profile save/reload are checked, but the resulting firmware has **not been boot-tested**. It is not installed by the simple installer.
 
 This project does not claim that a configuration reset will recover a non-booting modified firmware. The bootloader falls back to the secondary bank on a bad primary checksum, not on every kernel hang.
