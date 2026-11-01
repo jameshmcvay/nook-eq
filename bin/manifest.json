@@ -1,0 +1,14 @@
+{
+  "ram-eq": {
+    "sha256": "705fe93b48a3ea37b7525c52cd652f50274190ebac54ee3d54a9cf5040277ff5",
+    "bytes": 13648
+  },
+  "eqctl": {
+    "sha256": "d0560c24fbc34f9e0aa874a3b9828516464d1d102f690fe00109bc412fc1a200",
+    "bytes": 5012
+  },
+  "nook-http": {
+    "sha256": "d945f07887b7498e9809752b18a5d0ae1aa18e66d73f28d0469448f379467dda",
+    "bytes": 44028
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "version": "0.1.0",
+  "status": "experimental personal project",
+  "tested_hardware": "A1392 / 7.8.1, one unit",
+  "tests": {
+    "native_dsp": 7,
+    "mips_utility": 5,
+    "mips_ram_loader": 9,
+    "http_parser": 6,
+    "profile_save_restart": 1,
+    "svg_and_browser_coefficients": 2,
+    "browser_coefficient_vectors": 201,
+    "real_cpu_dsp_cases": 20
+  },
+  "browser": {
+    "desktop": true,
+    "mobile": true,
+    "no_horizontal_overflow": true,
+    "no_access_code": true,
+    "actual_jhm_svg_decoded": true,
+    "revert_works": true,
+    "band_action_alignment": true
+  },
+  "persistent": {
+    "prepared": true,
+    "boot_tested": false,
+    "uploaded": false,
+    "bytes": 6093728,
+    "sha256": "28c33d58a48df1ea3a08c315e8a4636205d49a7534182fe9e731824d7444e1cd",
+    "original_file_bytes_preserved": true,
+    "metadata_preserved": true
+  },
+  "not_claimed": [
+    "full physical channel/24-bit hardware verification",
+    "worst-case real-time scheduling proof",
+    "boot/recovery validation of persistent image"
+  ]
+}

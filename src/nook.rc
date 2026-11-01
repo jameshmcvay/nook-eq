@@ -1,0 +1,36 @@
+#!/bin/sh
+# PROVIDE: nook
+# REQUIRE: DAEMON acpd
+# Startup is asynchronous: a failed UI must never block AirPort startup.
+case "$1" in
+start)
+ (
+  umask 077
+  /bin/mkdir -p /var/run/nook-eq
+  /bin/mknod /var/run/nook-eq/control c 101 128
+  /bin/chmod 600 /var/run/nook-eq/control
+  /bin/mkdir -p /mnt/Flash/nook-eq
+  /usr/sbin/chown 65534:65534 /mnt/Flash/nook-eq
+  /bin/chmod 700 /mnt/Flash/nook-eq
+  count=0
+  while [ "$count" -lt 90 ]; do
+   addresses=$(/sbin/ifconfig bridge0 2>/dev/null | /usr/bin/sed -n 's/^[[:space:]]*inet \([0-9.]*\).*/\1/p')
+   for ip in $addresses; do
+    case "$ip" in
+     10.*|192.168.*|172.1[6-9].*|172.2[0-9].*|172.3[01].*)
+      /usr/local/sbin/nook-http "$ip" --persistent > /var/run/nook-eq/http.log 2>&1 &
+      echo $! > /var/run/nook-eq/http.pid
+      exit 0 ;;
+    esac
+   done
+   count=$((count+1))
+   /bin/sleep 1
+  done
+ ) & ;;
+stop)
+ if [ -r /var/run/nook-eq/http.pid ]; then
+  read nook_pid < /var/run/nook-eq/http.pid
+  case "$nook_pid" in ''|*[!0-9]*) ;; *) /bin/kill "$nook_pid" ;; esac
+ fi ;;
+esac
+exit 0

@@ -1,0 +1,3 @@
+pyelftools==0.33
+pycryptodome==4.2.0
+ziglang==0.17.0

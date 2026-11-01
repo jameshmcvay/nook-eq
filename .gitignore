@@ -1,0 +1,14 @@
+/.venv/
+/build/
+/dist/
+/private/
+/firmware/*.basebinary
+/firmware/*.bin
+/firmware/*.ffs
+__pycache__/
+.DS_Store
+*.key
+*.pem
+*.p12
+node_modules/
+*.log

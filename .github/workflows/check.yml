@@ -1,0 +1,22 @@
+name: checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 install.py --check
+      - run: node --check web/app.js && node --check web/coeff.js
+      - run: python3 -m pip install -r requirements-test.txt
+      - run: python3 scripts/build.py
+      - run: python3 tests/test_http_device.py
+      - run: python3 tests/test_persistence.py
+      - run: python3 scripts/package.py

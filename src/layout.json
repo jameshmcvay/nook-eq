@@ -1,0 +1,182 @@
+{
+  "status": "OFFLINE CANDIDATE \u2014 not approved for device installation",
+  "original_sha256": "266d5ec54f5993d780af3befee2d67c9a64deda89b1f5c25a53765f87cb96b19",
+  "patched_sha256": "232e64ab696d5e8dd40ec8e02c2240add7f1d9693dc8debe9444bc13cc7c4952",
+  "raw_size": 16240576,
+  "arena": [
+    "0x803be368",
+    "0x803cc640"
+  ],
+  "arena_used_bytes": 4800,
+  "patch_elf_sha256": "51655a3b8e7e6bd7435a4a963f2872aa7e546986260c0e474d57ad551d034ecf",
+  "changes": [
+    {
+      "kind": "section",
+      "name": ".text",
+      "address": "0x803be370",
+      "file_offset": "0x35e370",
+      "size": 3348,
+      "sha256": "046aaa5ac3e4651304f1286433eb62fe9b02cd9e7f86bb40e657085594ed104f",
+      "original": "all zero"
+    },
+    {
+      "kind": "section",
+      "name": ".rodata",
+      "address": "0x803bf090",
+      "file_offset": "0x35f090",
+      "size": 332,
+      "sha256": "22a0a85b46b17340619b6b487d3270bd35520d436f0b0c29cc4edcda6446681d",
+      "original": "all zero"
+    },
+    {
+      "kind": "section",
+      "name": ".got",
+      "address": "0x803bf1e0",
+      "file_offset": "0x35f1e0",
+      "size": 8,
+      "sha256": "22f23252fcd4f43ed48d75ca5e7323df657fbff031410740d914a01433e7580f",
+      "original": "all zero"
+    },
+    {
+      "kind": "section",
+      "name": ".bss",
+      "address": "0x803bf1f0",
+      "file_offset": "0x35f1f0",
+      "size": 1032,
+      "sha256": "934ee56ad6539fb9e5c276ecee2f3985f2d252d22acd690108bda80313c6bd58",
+      "original": "all zero"
+    },
+    {
+      "kind": "section",
+      "name": ".MIPS.abiflags",
+      "address": "0x803bf5f8",
+      "file_offset": "0x35f5f8",
+      "size": 24,
+      "sha256": "5e2204369ba50e87101bcc29cb54950ee283940f19e677a7fccafac7a8897033",
+      "original": "all zero"
+    },
+    {
+      "kind": "section",
+      "name": ".reginfo",
+      "address": "0x803bf610",
+      "file_offset": "0x35f610",
+      "size": 24,
+      "sha256": "d1ee0d795c54f49dc3ca5654819748e9f0397c6737f70e8d80552ccb3dd3f53b",
+      "original": "all zero"
+    },
+    {
+      "kind": "call",
+      "name": "eq_uiomove",
+      "address": "0x801f3370",
+      "file_offset": "0x193370",
+      "size": 4,
+      "before": "0c057cbc",
+      "after": "0c0ef8dc",
+      "original_target": "0x8015f2f0",
+      "patched_target": "0x803be370",
+      "delay_slot": "30a50fff"
+    },
+    {
+      "kind": "call",
+      "name": "eq_dma_init",
+      "address": "0x801f3d98",
+      "file_offset": "0x193d98",
+      "size": 4,
+      "before": "0c07ce11",
+      "after": "0c0ef8ef",
+      "original_target": "0x801f3844",
+      "patched_target": "0x803be3bc",
+      "delay_slot": "02402021"
+    },
+    {
+      "kind": "call",
+      "name": "eq_clock40_44100",
+      "address": "0x801f3068",
+      "file_offset": "0x193068",
+      "size": 4,
+      "before": "0c07c7a6",
+      "after": "0c0ef8fd",
+      "original_target": "0x801f1e98",
+      "patched_target": "0x803be3f4",
+      "delay_slot": "240561a2"
+    },
+    {
+      "kind": "call",
+      "name": "eq_clock40_48000",
+      "address": "0x801f3100",
+      "file_offset": "0x193100",
+      "size": 4,
+      "before": "0c07c7a6",
+      "after": "0c0ef909",
+      "original_target": "0x801f1e98",
+      "patched_target": "0x803be424",
+      "delay_slot": "240561a2"
+    },
+    {
+      "kind": "call",
+      "name": "eq_clock25_44100",
+      "address": "0x801f3138",
+      "file_offset": "0x193138",
+      "size": 4,
+      "before": "0c07c831",
+      "after": "0c0ef915",
+      "original_target": "0x801f20c4",
+      "patched_target": "0x803be454",
+      "delay_slot": "240561a2"
+    },
+    {
+      "kind": "call",
+      "name": "eq_clock25_48000",
+      "address": "0x801f3160",
+      "file_offset": "0x193160",
+      "size": 4,
+      "before": "0c07c831",
+      "after": "0c0ef921",
+      "original_target": "0x801f20c4",
+      "patched_target": "0x803be484",
+      "delay_slot": "240561a2"
+    },
+    {
+      "kind": "dispatch_pointer",
+      "name": "eq_open",
+      "address": "0x8030fc40",
+      "file_offset": "0x2afc40",
+      "size": 4,
+      "before": "801f3d18",
+      "after": "803be4b4",
+      "original_target": "0x801f3d18",
+      "patched_target": "0x803be4b4"
+    },
+    {
+      "kind": "dispatch_pointer",
+      "name": "eq_close",
+      "address": "0x8030fc44",
+      "file_offset": "0x2afc44",
+      "size": 4,
+      "before": "801f3e68",
+      "after": "803be4e4",
+      "original_target": "0x801f3e68",
+      "patched_target": "0x803be4e4"
+    },
+    {
+      "kind": "dispatch_pointer",
+      "name": "eq_ioctl",
+      "address": "0x8030fc50",
+      "file_offset": "0x2afc50",
+      "size": 4,
+      "before": "801f2928",
+      "after": "803be514",
+      "original_target": "0x801f2928",
+      "patched_target": "0x803be514"
+    }
+  ],
+  "reverse_patch_verified": true,
+  "unverified": [
+    "physical L/R mapping and complete 24-bit hardware behavior",
+    "multi-writer concurrency",
+    "board timing and cache behavior",
+    "full-board boot and firmware acceptance",
+    "recovery procedure",
+    "on-device runtime control transport verification"
+  ]
+}
