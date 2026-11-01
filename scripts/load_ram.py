@@ -4,9 +4,9 @@ Requires the existing private SSH session. Reboot removes both patch and files.
 import argparse,hashlib,json,os,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'control'))
-from transport import SshTransport,SOCKET
-SSH=['/usr/bin/ssh','-S',str(SOCKET),'-o','ControlMaster=no','-o','ProxyCommand=/usr/bin/false','-o','BatchMode=yes','root@Dining-Nook.local']
+sys.path.insert(0,str(ROOT/'scripts'))
+from transport import SshTransport,SOCKET,HOST
+SSH=['/usr/bin/ssh','-S',str(SOCKET),'-o','ControlMaster=no','-o','ProxyCommand=/usr/bin/false','-o','BatchMode=yes',HOST]
 def remote(command,data=None):
  r=subprocess.run(SSH+[command],input=data,capture_output=True,timeout=20)
  if r.returncode:raise RuntimeError(f'Temporary RAM operation exited {r.returncode}: '+r.stderr.decode(errors='replace')[:500])
@@ -16,7 +16,7 @@ def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--install-bypass',action='store_true',required=True);ap.parse_args()
  manifest=json.loads((ROOT/'bin/ram_manifest.json').read_text())
  loader=(ROOT/'bin/ram-eq').read_bytes()
- if hashlib.sha256(loader).hexdigest()!=manifest['loader_sha256']:raise RuntimeError('Loader hash mismatch; rebuild with build_ram.py.')
+ if hashlib.sha256(loader).hexdigest()!=manifest['loader_sha256']:raise RuntimeError('Loader hash mismatch; rebuild with scripts/build.py.')
  # Exclusive directory creation refuses a repeat or ambiguous prior attempt.
  remote('umask 077; /bin/mkdir /var/run/nook-eq')
  for name,data in [('ram-eq',loader),('eqctl',(ROOT/'bin/eqctl').read_bytes())]:

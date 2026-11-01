@@ -27,7 +27,7 @@ def main():
  if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.-]{0,62}',TARGET):raise RuntimeError('Use an AirPort hostname or IPv4 address.')
  print(f'Target: {TARGET} / model 115 / firmware 7.8.1')
  if a.finish_enable:print('This verifies the saved SSH target flags and requests one reboot. It does not rewrite settings.')
- if a.enable:print('This enables diagnostic root SSH on connected networks and reboots Dining Nook. It does not install firmware.')
+ if a.enable:print('This enables diagnostic root SSH on connected networks and reboots the AirPort. It does not install firmware.')
  password=getpass.getpass('AirPort admin password (not saved): ')
  try:
   plan=request('inspect',password)
@@ -40,7 +40,7 @@ def main():
    if saved.get('name')!=plan.get('name') or saved.get('model')!=115 or saved.get('dbug_after')!=plan['dbug_before'] or plan['dbug_before']!=plan['dbug_after']:
     raise RuntimeError('Saved SSH target flags are not present; no write or reboot performed.')
    result=request('finish_enable_ssh',password,saved['dbug_after'])
-   print(json.dumps(result,indent=2));print('Reboot requested. Wait for Dining Nook to return before connecting to SSH.');return
+   print(json.dumps(result,indent=2));print('Reboot requested. Wait for the AirPort to return before connecting to SSH.');return
   if not a.enable:
    print('Inspection only. No settings changed.');return
   backup=ROOT/'private/ssh_debug_flags_before.json'

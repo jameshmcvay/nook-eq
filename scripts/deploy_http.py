@@ -6,7 +6,7 @@ import argparse,hashlib,ipaddress,json,os,re,subprocess,time,urllib.request
 from pathlib import Path
 from transport import SshTransport,SOCKET,HOST
 ROOT=Path(__file__).resolve().parents[1]
-SSH=['/usr/bin/ssh','-S',str(SOCKET),'-o','ControlMaster=no','-o','ProxyCommand=/usr/bin/false','-o','BatchMode=yes','root@Dining-Nook.local']
+SSH=['/usr/bin/ssh','-S',str(SOCKET),'-o','ControlMaster=no','-o','ProxyCommand=/usr/bin/false','-o','BatchMode=yes',HOST]
 def remote(command,data=None,check=True):
  r=subprocess.run(SSH+[command],input=data,capture_output=True,timeout=20)
  if check and r.returncode:raise RuntimeError('Remote deployment operation failed: '+r.stderr.decode(errors='replace')[:250])
