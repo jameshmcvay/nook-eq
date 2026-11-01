@@ -1,6 +1,6 @@
 # Nook EQ
 
-A small, on-device parametric EQ for the second-generation Apple AirPort Express (A1392), by [jhm](https://jhm.nz).
+A small, on-device parametric EQ for the second-generation Apple AirPort Express (A1392)
 
 Eight peaking bands, preamp, bypass, gentle presets and a response preview. Open the device in a browser and adjust its audio output directly. No cloud, account, access code or Mac audio relay. The web service runs without root privileges; the fixed-point DSP runs in the AirPort's I²S driver.
 
