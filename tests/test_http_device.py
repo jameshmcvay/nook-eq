@@ -21,6 +21,7 @@ class HttpTests(unittest.TestCase):
  def test_embedded_assets_and_binary_status(self):
   for path in ['/','/app.js','/coeff.js','/presets.js','/style.css']:
    code,data=self.request('GET',path);self.assertEqual(code,200);self.assertGreater(len(data),500)
+  self.assertEqual(self.request('GET','/api/name'),(200,b'AirPort Express'))
   code,data=self.request('GET','/api/status');self.assertEqual(code,200);self.assertEqual(len(data),36);self.assertEqual(data[:4],b'EQ10')
  def test_program_set_readback_and_metadata(self):
   cfg=dict(enabled=True,preamp_db=-5,bands=[]);p=blob(make_program(cfg));body=p+json.dumps(cfg).encode();headers={'Origin':f'http://127.0.0.1:{PORT}','Content-Type':'application/octet-stream'}

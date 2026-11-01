@@ -68,5 +68,6 @@ $('apply').onclick=async()=>{
 $('export').onclick=()=>{if(!config)return;const url=URL.createObjectURL(new Blob([JSON.stringify(config,null,2)+'\n'],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='nook-eq.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 window.addEventListener('resize',draw);
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
+request('/api/name').then(r=>r.text()).then(name=>{$('device-name').textContent=name.trim()||'AirPort Express';}).catch(()=>{});
 request('/api/mode').then(r=>r.json()).then(mode=>{$('install-mode').textContent=mode.persistent?'Saved on device':'RAM · clears on restart';}).catch(()=>{});
 loadCurrent().catch(e=>{config=clone(factoryPresets[0].config);$('preset-description').textContent='Offline editor · choose a preset to begin.';render();showError(e.message);}).finally(poll);

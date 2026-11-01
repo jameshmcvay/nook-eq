@@ -13,6 +13,7 @@ extern int os_five(int,uintptr_t,uintptr_t,uintptr_t,uintptr_t,uintptr_t);
 #endif
 static int persistent;
 static int control;
+static char device_name[256]="AirPort Express";
 static char input[8193],metadata[3765],host_ip[40];
 static uint8_t remembered[332];
 static unsigned metadata_size;
@@ -103,6 +104,7 @@ static void serve(int fd){
  if(equal(method,"GET")){
   if(content_size||total!=header_size){fail(fd,"400 Bad Request","Unexpected request body.");return;}
   for(unsigned i=0;i<ASSET_COUNT;i++)if(equal(path,assets[i].path)){reply(fd,"200 OK",assets[i].type,assets[i].data,assets[i].size);return;}
+  if(equal(path,"/api/name")){reply(fd,"200 OK","text/plain; charset=utf-8",device_name,length(device_name));return;}
   if(equal(path,"/api/mode")){const char *mode=persistent?"{\"persistent\":true}":"{\"persistent\":false}";reply(fd,"200 OK","application/json",mode,length(mode));return;}
   if(equal(path,"/api/status")){status_reply(fd);return;}
   if(equal(path,"/api/program")||equal(path,"/api/config")){
@@ -140,6 +142,8 @@ int main(int argc,char **argv){
  if(!address[4])return startup_error(2);
  char *h=append(host_ip,argv[1]);h=append(h,":");h=decimal(h,NOOK_PORT);*h=0;
  control=os_call(5,(uintptr_t)"/var/run/nook-eq/control",2,0,0);struct eq_status state;if(control<0||get_status(&state))return startup_error(3);
+ int name_fd=os_call(5,(uintptr_t)"/var/run/nook-eq/name",0,0,0);
+ if(name_fd>=0){char name[256];int n=os_call(3,name_fd,(uintptr_t)name,sizeof name-1,0);os_call(6,name_fd,0,0,0);if(n>0){while(n>0&&(name[n-1]=='\n'||name[n-1]=='\r'))n--;int valid=n>0;for(int i=0;i<n;i++)if((unsigned char)name[i]<32)valid=0;if(valid){copy(device_name,name,(unsigned)n);device_name[n]=0;}}}
  if(persistent)load_profile(PROFILE_DIR "/program",1);
  else load_profile("/var/run/nook-eq/http.seed",0);
  /* The open descriptor exposes only validated EQ ioctls. Drop all groups and

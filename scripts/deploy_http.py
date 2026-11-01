@@ -41,6 +41,8 @@ def main():
    else:raise RuntimeError('Prior service did not stop; not overwriting its executable.')
  remote('umask 077; /bin/cat > /var/run/nook-eq/nook-http',binary);remote('/bin/chmod 700 /var/run/nook-eq/nook-http')
  if remote('/bin/cat /var/run/nook-eq/nook-http').stdout!=binary:raise RuntimeError('Server executable readback mismatch.')
+ name=remote('/usr/bin/acp -q syNm').stdout.strip()[:255]
+ if name:remote('umask 077; /bin/cat > /var/run/nook-eq/name',name)
  if seed is not None:remote('umask 077; /bin/cat > /var/run/nook-eq/http.seed',seed)
  remote(f'/usr/bin/nohup /var/run/nook-eq/nook-http {address} > /var/run/nook-eq/http.log 2>&1 < /dev/null & echo $! > /var/run/nook-eq/http.pid')
  url=f'http://{address}:8080';headers={}

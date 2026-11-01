@@ -17,6 +17,7 @@ jobs:
       - run: node --check web/app.js && node --check web/coeff.js
       - run: python3 -m pip install -r requirements-test.txt
       - run: python3 scripts/build.py
+      - run: python3 tests/test_assets.py
       - run: python3 tests/test_http_device.py
       - run: python3 tests/test_persistence.py
       - run: python3 scripts/package.py

@@ -18,6 +18,7 @@ start)
    for ip in $addresses; do
     case "$ip" in
      10.*|192.168.*|172.1[6-9].*|172.2[0-9].*|172.3[01].*)
+      /usr/bin/acp -q syNm > /var/run/nook-eq/name
       /usr/local/sbin/nook-http "$ip" --persistent > /var/run/nook-eq/http.log 2>&1 &
       echo $! > /var/run/nook-eq/http.pid
       exit 0 ;;

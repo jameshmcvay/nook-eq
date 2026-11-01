@@ -8,3 +8,4 @@
 bin/eqctl -text
 bin/ram-eq -text
 bin/nook-http -text
+third_party/** -whitespace

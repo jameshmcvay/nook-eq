@@ -19,14 +19,15 @@
     "no_access_code": true,
     "actual_jhm_svg_decoded": true,
     "revert_works": true,
-    "band_action_alignment": true
+    "band_action_alignment": true,
+    "configured_device_subtitle": true
   },
   "persistent": {
     "prepared": true,
     "boot_tested": false,
     "uploaded": false,
-    "bytes": 6093728,
-    "sha256": "28c33d58a48df1ea3a08c315e8a4636205d49a7534182fe9e731824d7444e1cd",
+    "bytes": 6094012,
+    "sha256": "73a6cdc5a98f2c95bee1012b6820e624b9000f7b05fc0c965d0c9b4abf456583",
     "original_file_bytes_preserved": true,
     "metadata_preserved": true
   },
